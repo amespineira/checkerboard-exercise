@@ -2,9 +2,19 @@
 var body=document.getElementsByTagName('body');
 var hex="ABCDEFG1234567890";
 var hexarray=hex.split("");
-console.log(hexarray);
 createBoard([9,7])
-
+change()
+function change(){
+  var stuff=setInterval(function(){
+    changeColors()
+}, 1000);
+}
+function changeColors(){
+  var blocks=document.getElementsByTagName('div');
+  for(var i=0; i<blocks.length; i++){
+    blocks[i].setAttribute('style',"background-color:"+randomHex()+"; width: 11.1%; height: 11.1%; float: left; padding-bottom: 11.1%; margin: 0; padding-top:0;")
+  }
+}
 function createBoard(size){ //size is formatted: rowlength, columns
     for(var i=1; i<=size[1]; i++){
       (i%2===0)? createRow(size[0]): createRow(size[0]);
