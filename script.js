@@ -1,22 +1,33 @@
 // Your JS goes here
 var body=document.getElementsByTagName('body');
+var hex="ABCDEFG1234567890";
+var hexarray=hex.split("");
+console.log(hexarray);
+createBoard([9,7])
 
-createBoard([9,7],'red','black')
-
-function createBoard(size, color1, color2){ //size is formatted: rowlength, columns
+function createBoard(size){ //size is formatted: rowlength, columns
     for(var i=1; i<=size[1]; i++){
-      (i%2===0)? createRow(color1,color2,size[0]): createRow(color2,color1,size[0]);
+      (i%2===0)? createRow(size[0]): createRow(size[0]);
     }
 }
-function createRow(color1, color2, length){
+function createRow(length){
   for(var i=1; i<=length; i++){
-    (i%2===0)? createBlock(color2) : createBlock(color1);
+    createBlock();
   }
 }
-
-function createBlock(color){
-  var style="background-color:"+color+"; width: 11.1%; height: 11.1%; float: left; padding-bottom: 11.1%; margin: 0; padding-top:0";
+function createBlock(){
+  var style="background-color:"+randomHex()+"; width: 11.1%; height: 11.1%; float: left; padding-bottom: 11.1%; margin: 0; padding-top:0";
   var block=document.createElement('div');
   block.setAttribute('style',style)
   body[0].appendChild(block);
+}
+function randomHex(){
+  var out="#";
+  for(var i=0; i<6; i++){
+    out+=hexarray[getRandomInt(0,hex.length)]
+  }
+  return out;
+}
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
