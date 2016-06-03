@@ -2,7 +2,6 @@
 var body=document.getElementsByTagName('body');
 var hex="ABCDEFG1234567890";
 var hexarray=hex.split("");
-console.log(hexarray);
 createBoard([9,7])
 
 function createBoard(size){ //size is formatted: rowlength, columns
